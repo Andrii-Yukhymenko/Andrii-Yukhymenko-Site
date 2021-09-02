@@ -1,0 +1,16 @@
+// @import 'vars'; если используете scss-переменные - подключите сюда vars, но удалите root из _vars.scss
+
+@import "vars";
+@import "mixins";
+
+//Пример импорта
+//@import "./components/header";
+
+body {
+  font-family: "SabadoRegular";
+  padding: 20px;
+}
+
+h1 {
+  margin: 0px 0px 20px 0px;
+}
