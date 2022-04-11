@@ -1,84 +1,3 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/js/_components.js":
-/*!*******************************!*\
-  !*** ./src/js/_components.js ***!
-  \*******************************/
-/***/ (() => {
-
-console.log('components');
-
-/***/ }),
-
-/***/ "./src/js/_functions.js":
-/*!******************************!*\
-  !*** ./src/js/_functions.js ***!
-  \******************************/
-/***/ (() => {
-
-// Троттлинг функции (для ресайза, ввода в инпут, скролла и т.д.)
-// import { throttle } from './functions/throttle';
-// let yourFunc = () => { console.log('throttle') };
-// let func = throttle(yourFunc);
-// window.addEventListener('resize', func);
-// Фикс фулскрин-блоков
-// import './functions/fix-fullheight';
-// Реализация бургер-меню
-// import { burger } from './functions/burger';
-// Реализация остановки скролла
-// import { disableScroll } from './functions/disable-scroll';
-// Реализация включения скролла
-// import { enableScroll } from './functions/disable-scroll';
-// Реализация модального окна
-// import GraphModal from 'graph-modal';
-// const modal = new GraphModal();
-// Реализация табов
-// import GraphTabs from 'graph-tabs';
-// const tabs = new GraphTabs('tab');
-
-/***/ }),
-
-/***/ "./src/js/_vars.js":
-/*!*************************!*\
-  !*** ./src/js/_vars.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  windowEl: window,
-  documentEl: document,
-  htmlEl: document.documentElement,
-  bodyEl: document.body
-});
-
-/***/ }),
-
-/***/ "./src/js/_vendor.js":
-/*!***************************!*\
-  !*** ./src/js/_vendor.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vendor_focus_visible_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vendor/focus-visible.js */ "./src/js/vendor/focus-visible.js");
-/* harmony import */ var _vendor_focus_visible_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_vendor_focus_visible_js__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/***/ }),
-
-/***/ "./src/js/vendor/focus-visible.js":
-/*!****************************************!*\
-  !*** ./src/js/vendor/focus-visible.js ***!
-  \****************************************/
-/***/ (() => {
-
 /**
  * Applies the :focus-visible polyfill at the given scope.
  * A scope in this case is either the top-level Document or a Shadow Root.
@@ -90,6 +9,7 @@ function applyFocusVisiblePolyfill(scope) {
   var hadKeyboardEvent = true;
   var hadFocusVisibleRecently = false;
   var hadFocusVisibleRecentlyTimeout = null;
+
   var inputTypesAllowlist = {
     text: true,
     search: true,
@@ -105,19 +25,26 @@ function applyFocusVisiblePolyfill(scope) {
     datetime: true,
     'datetime-local': true
   };
+
   /**
    * Helper function for legacy browsers and iframes which sometimes focus
    * elements like document, body, and non-interactive SVG.
    * @param {Element} el
    */
-
   function isValidFocusTarget(el) {
-    if (el && el !== document && el.nodeName !== 'HTML' && el.nodeName !== 'BODY' && 'classList' in el && 'contains' in el.classList) {
+    if (
+      el &&
+      el !== document &&
+      el.nodeName !== 'HTML' &&
+      el.nodeName !== 'BODY' &&
+      'classList' in el &&
+      'contains' in el.classList
+    ) {
       return true;
     }
-
     return false;
   }
+
   /**
    * Computes whether the given element should automatically trigger the
    * `focus-visible` class being added, i.e. whether it should always match
@@ -125,8 +52,6 @@ function applyFocusVisiblePolyfill(scope) {
    * @param {Element} el
    * @return {boolean}
    */
-
-
   function focusTriggersKeyboardModality(el) {
     var type = el.type;
     var tagName = el.tagName;
@@ -145,36 +70,33 @@ function applyFocusVisiblePolyfill(scope) {
 
     return false;
   }
+
   /**
    * Add the `focus-visible` class to the given element if it was not added by
    * the author.
    * @param {Element} el
    */
-
-
   function addFocusVisibleClass(el) {
     if (el.classList.contains('focus-visible')) {
       return;
     }
-
     el.classList.add('focus-visible');
     el.setAttribute('data-focus-visible-added', '');
   }
+
   /**
    * Remove the `focus-visible` class from the given element if it was not
    * originally added by the author.
    * @param {Element} el
    */
-
-
   function removeFocusVisibleClass(el) {
     if (!el.hasAttribute('data-focus-visible-added')) {
       return;
     }
-
     el.classList.remove('focus-visible');
     el.removeAttribute('data-focus-visible-added');
   }
+
   /**
    * If the most recent user interaction was via the keyboard;
    * and the key press did not include a meta, alt/option, or control key;
@@ -183,8 +105,6 @@ function applyFocusVisiblePolyfill(scope) {
    * of our keyboard modality state with `hadKeyboardEvent`.
    * @param {KeyboardEvent} e
    */
-
-
   function onKeyDown(e) {
     if (e.metaKey || e.altKey || e.ctrlKey) {
       return;
@@ -196,6 +116,7 @@ function applyFocusVisiblePolyfill(scope) {
 
     hadKeyboardEvent = true;
   }
+
   /**
    * If at any point a user clicks with a pointing device, ensure that we change
    * the modality away from keyboard.
@@ -204,11 +125,10 @@ function applyFocusVisiblePolyfill(scope) {
    * pointing device, while we still think we're in keyboard modality.
    * @param {Event} e
    */
-
-
   function onPointerDown(e) {
     hadKeyboardEvent = false;
   }
+
   /**
    * On `focus`, add the `focus-visible` class to the target if:
    * - the target received focus as a result of keyboard navigation, or
@@ -216,8 +136,6 @@ function applyFocusVisiblePolyfill(scope) {
    *   via the keyboard (e.g. a text box)
    * @param {Event} e
    */
-
-
   function onFocus(e) {
     // Prevent IE from focusing the document or HTML element.
     if (!isValidFocusTarget(e.target)) {
@@ -228,37 +146,38 @@ function applyFocusVisiblePolyfill(scope) {
       addFocusVisibleClass(e.target);
     }
   }
+
   /**
    * On `blur`, remove the `focus-visible` class from the target.
    * @param {Event} e
    */
-
-
   function onBlur(e) {
     if (!isValidFocusTarget(e.target)) {
       return;
     }
 
-    if (e.target.classList.contains('focus-visible') || e.target.hasAttribute('data-focus-visible-added')) {
+    if (
+      e.target.classList.contains('focus-visible') ||
+      e.target.hasAttribute('data-focus-visible-added')
+    ) {
       // To detect a tab/window switch, we look for a blur event followed
       // rapidly by a visibility change.
       // If we don't see a visibility change within 100ms, it's probably a
       // regular focus change.
       hadFocusVisibleRecently = true;
       window.clearTimeout(hadFocusVisibleRecentlyTimeout);
-      hadFocusVisibleRecentlyTimeout = window.setTimeout(function () {
+      hadFocusVisibleRecentlyTimeout = window.setTimeout(function() {
         hadFocusVisibleRecently = false;
       }, 100);
       removeFocusVisibleClass(e.target);
     }
   }
+
   /**
    * If the user changes tabs, keep track of whether or not the previously
    * focused element had .focus-visible.
    * @param {Event} e
    */
-
-
   function onVisibilityChange(e) {
     if (document.visibilityState === 'hidden') {
       // If the tab becomes active again, the browser will handle calling focus
@@ -268,18 +187,16 @@ function applyFocusVisiblePolyfill(scope) {
       if (hadFocusVisibleRecently) {
         hadKeyboardEvent = true;
       }
-
       addInitialPointerMoveListeners();
     }
   }
+
   /**
    * Add a group of listeners to detect usage of any pointing devices.
    * These listeners will be added when the polyfill first loads, and anytime
    * the window is blurred, so that they are active when the window regains
    * focus.
    */
-
-
   function addInitialPointerMoveListeners() {
     document.addEventListener('mousemove', onInitialPointerMove);
     document.addEventListener('mousedown', onInitialPointerMove);
@@ -303,6 +220,7 @@ function applyFocusVisiblePolyfill(scope) {
     document.removeEventListener('touchstart', onInitialPointerMove);
     document.removeEventListener('touchend', onInitialPointerMove);
   }
+
   /**
    * When the polfyill first loads, assume the user is in keyboard modality.
    * If any event is received from a pointing device (e.g. mouse, pointer,
@@ -310,8 +228,6 @@ function applyFocusVisiblePolyfill(scope) {
    * This accounts for situations where focus enters the page from the URL bar.
    * @param {Event} e
    */
-
-
   function onInitialPointerMove(e) {
     // Work around a Safari quirk that fires a mousemove on <html> whenever the
     // window blurs, even if you're tabbing out of the page. ¯\_(ツ)_/¯
@@ -321,28 +237,31 @@ function applyFocusVisiblePolyfill(scope) {
 
     hadKeyboardEvent = false;
     removeInitialPointerMoveListeners();
-  } // For some kinds of state, we are interested in changes at the global scope
+  }
+
+  // For some kinds of state, we are interested in changes at the global scope
   // only. For example, global pointer input, global key presses and global
   // visibility change should affect the state at every scope:
-
-
   document.addEventListener('keydown', onKeyDown, true);
   document.addEventListener('mousedown', onPointerDown, true);
   document.addEventListener('pointerdown', onPointerDown, true);
   document.addEventListener('touchstart', onPointerDown, true);
   document.addEventListener('visibilitychange', onVisibilityChange, true);
-  addInitialPointerMoveListeners(); // For focus and blur, we specifically care about state changes in the local
+
+  addInitialPointerMoveListeners();
+
+  // For focus and blur, we specifically care about state changes in the local
   // scope. This is because focus / blur events that originate from within a
   // shadow root are not re-dispatched from the host element if it was already
   // the active element in its own scope:
-
   scope.addEventListener('focus', onFocus, true);
-  scope.addEventListener('blur', onBlur, true); // We detect that a node is a ShadowRoot by ensuring that it is a
+  scope.addEventListener('blur', onBlur, true);
+
+  // We detect that a node is a ShadowRoot by ensuring that it is a
   // DocumentFragment and also has a host property. This check covers native
   // implementation and polyfill implementation transparently. If we only cared
   // about the native implementation, we could just check if the scope was
   // an instance of a ShadowRoot.
-
   if (scope.nodeType === Node.DOCUMENT_FRAGMENT_NODE && scope.host) {
     // Since a ShadowRoot is a special kind of DocumentFragment, it does not
     // have a root element to add a class to. So, we add this attribute to the
@@ -352,18 +271,19 @@ function applyFocusVisiblePolyfill(scope) {
     document.documentElement.classList.add('js-focus-visible');
     document.documentElement.setAttribute('data-js-focus-visible', '');
   }
-} // It is important to wrap all references to global window and document in
+}
+
+// It is important to wrap all references to global window and document in
 // these checks to support server-side rendering use cases
 // @see https://github.com/WICG/focus-visible/issues/199
-
-
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   // Make the polyfill helper globally available. This can be used as a signal
   // to interested libraries that wish to coordinate with the polyfill for e.g.,
   // applying the polyfill to a shadow root:
-  window.applyFocusVisiblePolyfill = applyFocusVisiblePolyfill; // Notify interested libraries of the polyfill's presence, in case the
-  // polyfill was loaded lazily:
+  window.applyFocusVisiblePolyfill = applyFocusVisiblePolyfill;
 
+  // Notify interested libraries of the polyfill's presence, in case the
+  // polyfill was loaded lazily:
   var event;
 
   try {
@@ -382,97 +302,3 @@ if (typeof document !== 'undefined') {
   // coordination is required to use the polyfill in the top-level document:
   applyFocusVisiblePolyfill(document);
 }
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_vendor */ "./src/js/_vendor.js");
-/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_vars */ "./src/js/_vars.js");
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_functions */ "./src/js/_functions.js");
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_functions__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_components */ "./src/js/_components.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-})();
-
-/******/ })()
-;
-//# sourceMappingURL=main.js.map
