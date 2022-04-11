@@ -93,8 +93,8 @@
 .about-me {
 }
 
-.status-bar {
-  //background: #af7070;
+.console-bar {
+  margin: 6px 0 0 0;
   display: flex;
   align-items: center;
   &__item {
@@ -140,7 +140,30 @@
       border-color: transparent transparent transparent #e8e517;
     }
   }
-  &__cursor {
+}
+
+.console-bar-form {
+  position: relative;
+  &__input {
+    background: inherit;
+    border: none;
+    outline: none;
+    color: #efefef;
+    opacity: 0;
+  }
+  &__fake-output-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    top: 0;
+    left: 0;
+    z-index: -5;
+  }
+  &__fake-output {
+  }
+  &__fake-caret {
     background: #efefef;
     width: 10px;
     height: 20px;

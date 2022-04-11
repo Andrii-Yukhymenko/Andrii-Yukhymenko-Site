@@ -124,14 +124,20 @@
             </div>
           </div>
         </div>
-        <div class="status-bar">
-          <div class="status-bar__path status-bar__item">
+        <div class="console-bar">
+          <div class="console-bar__path console-bar__item">
             <i class="fa-solid fa-folder"></i> D:\projects\my-website
           </div>
-          <div class="status-bar__git status-bar__item">
+          <div class="console-bar__git console-bar__item">
             <i class="fa-solid fa-code-branch"></i> master
           </div>
-          <div class="status-bar__cursor"></div>
+          <form class="console-bar__form console-bar-form">
+            <input type="text" class="console-bar-form__input" />
+            <div class="console-bar-form__fake-output-wrapper">
+              <p class="console-bar-form__fake-output">fake</p>
+              <div class="console-bar-form__fake-caret"></div>
+            </div>
+          </form>
         </div>
       </div>
 
