@@ -2,7 +2,9 @@ const consoleFormInput = document.querySelector(".console-bar-form__input");
 const consoleForm = document.querySelector(".console-bar-form");
 const fakeCaret = document.querySelector(".console-bar-form__fake-caret");
 const avatar = document.querySelector(".avatar");
+const clock = document.querySelector(".console-bar__clock");
 
+// Список команд и то что они делают
 const consoleCommands = [
   {
     command: "instagram",
@@ -68,12 +70,7 @@ const consoleCommands = [
 
 const cleanConsoleInput = () => {
   consoleFormInput.value = "";
-  // consoleFormInput.classList.contains("console-bar-form__error")
-  //   ? (fakeCaret.style.display = "block")
-  //   : "";
   consoleFormInput.classList.remove("console-bar-form__error");
-  // e.target.value.length === 0 ? (fakeCaret.style.display = "block") : "";
-  // ! При удачном выполнении команды добавлять специальный класс
 };
 
 consoleFormInput.addEventListener(
@@ -82,6 +79,7 @@ consoleFormInput.addEventListener(
 );
 consoleFormInput.addEventListener("focusout", (e) => {
   cleanConsoleInput();
+  fakeCaret.style.display = "block";
 });
 
 consoleForm.addEventListener("submit", (e) => {
@@ -97,3 +95,24 @@ consoleForm.addEventListener("submit", (e) => {
     }
   });
 });
+
+function setClockTime() {
+  let date = new Date();
+  let hour = date.getHours();
+  let min = date.getMinutes();
+  hour = updateTime(hour);
+  min = updateTime(min);
+  clock.innerText = hour + ":" + min;
+  let t = setTimeout(() => {
+    setClockTime();
+  }, 1000);
+  function updateTime(k) {
+    if (k < 10) {
+      return "0" + k;
+    } else {
+      return k;
+    }
+  }
+}
+
+setClockTime();
