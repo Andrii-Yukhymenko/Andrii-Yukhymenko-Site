@@ -9,8 +9,8 @@
 @import "./components/header";
 
 .page__body {
-  background: #0c0c0c;
-  color: #cccccc;
+  background: $black;
+  color: $white;
   font-size: 13px;
 }
 
@@ -22,7 +22,8 @@
 }
 
 .main-border {
-  border: 2px solid #47484c;
+  //border: 2px solid #47484c;
+  border: $border;
   padding: 16px 6px 6px 6px;
   position: relative;
   z-index: 1;
@@ -40,7 +41,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0 10px;
-  background: #000;
+  background: $black;
 }
 .sanfrancisco {
   font-family: "SanFrancisco";
@@ -122,32 +123,32 @@
   }
   &__user {
     //background: #de382b;
-    background: #003543;
-    color: #94e466;
+    background: $console-user-bg;
+    color: $console-user-text;
     &::after {
       //border-color: transparent transparent transparent #de382b;
-      border-color: transparent transparent transparent #003543;
+      border-color: transparent transparent transparent $console-user-bg;
     }
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
   &__path {
     //background: #262f77;
-    background: #006298;
-    color: #fff;
+    background: $console-path-bg;
+    color: $console-path-text;
     &::after {
       //border-color: transparent transparent transparent #262f77;
-      border-color: transparent transparent transparent #006298;
+      border-color: transparent transparent transparent $console-path-bg;
     }
   }
   &__git {
     //background: #e8e517;
-    background: #d2ff5e;
-    color: #000000;
+    background: $console-git-bg;
+    color: $console-git-text;
     margin: 0 25px 0 0;
     &::after {
       //border-color: transparent transparent transparent #fffa37;
-      border-color: transparent transparent transparent #d2ff5e;
+      border-color: transparent transparent transparent $console-git-bg;
     }
   }
   &__clock{
@@ -161,8 +162,8 @@
     padding-left: 25px;
     padding-right: 25px;
     border-radius: 26px;
-    background: #006298;
-    color: #fff;
+    background: $console-clock-bg;
+    color: $console-clock-text;
   }
 }
 
@@ -174,7 +175,7 @@
     background: inherit;
     border: none;
     outline: none;
-    color: #efefef;
+    color: $white;
     position: relative;
     height: 20px;
     font-size: 15px;
@@ -184,7 +185,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #efefef;
+    background: $white;
     width: 10px;
     height: 100%;
     animation-name: blink;
@@ -193,7 +194,7 @@
     animation-iteration-count: infinite;
   }
   &__error{
-    color: #ff0001;
+    color: $red;
   }
 }
 

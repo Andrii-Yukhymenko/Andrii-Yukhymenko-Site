@@ -84,16 +84,29 @@ consoleFormInput.addEventListener("focusout", (e) => {
 
 consoleForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  consoleCommands.forEach((i) => {
+  // consoleCommands.forEach((i) => {
+  //   console.log(consoleFormInput.value);
+  //   if (consoleFormInput.value === i.command) {
+  //     consoleFormInput.value = "";
+  //     i.callback();
+  //   } else {
+  //     consoleFormInput.classList.add("console-bar-form__error");
+  //     consoleFormInput.value = `The term is not recognized.`;
+  //     setTimeout(() => cleanConsoleInput(), 1500);
+  //   }
+  // });
+  for (let i of consoleCommands) {
+    console.log(consoleFormInput.value);
     if (consoleFormInput.value === i.command) {
       consoleFormInput.value = "";
       i.callback();
+      break;
     } else {
       consoleFormInput.classList.add("console-bar-form__error");
       consoleFormInput.value = `The term is not recognized.`;
       setTimeout(() => cleanConsoleInput(), 1500);
     }
-  });
+  }
 });
 
 function setClockTime() {
@@ -116,3 +129,7 @@ function setClockTime() {
 }
 
 setClockTime();
+
+document.addEventListener("keydown", () => {
+  consoleFormInput.focus();
+});
