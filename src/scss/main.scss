@@ -9,7 +9,7 @@
 @import "./components/header";
 
 .page__body {
-  background: #000;
+  background: #0c0c0c;
   color: #cccccc;
   font-size: 13px;
 }
@@ -70,7 +70,7 @@
   &--about-me {
     margin: 0px 0px 12px 0px;
   }
-  &--commands{
+  &--commands {
     margin: 0px 0px 0px 0px;
   }
 }
@@ -103,6 +103,7 @@
   margin: 6px 0 0 0;
   display: flex;
   align-items: center;
+  position: relative;
   &__item {
     padding: 4px 8px 4px 20px;
     position: relative;
@@ -120,44 +121,48 @@
     }
   }
   &__user {
-    background: #de382b;
-    //background: #ff489c;
+    //background: #de382b;
+    background: #003543;
+    color: #94e466;
     &::after {
-      border-color: transparent transparent transparent #de382b;
-      //border-color: transparent transparent transparent #ff489c;
+      //border-color: transparent transparent transparent #de382b;
+      border-color: transparent transparent transparent #003543;
     }
-    //&::before {
-    //  content: "";
-    //  position: absolute;
-    //  transform: translate(0, 0);
-    //  z-index: 10;
-    //  bottom: 0;
-    //  left: 0;
-    //  width: 0;
-    //  height: 0;
-    //  border-style: solid;
-    //  border-width: 11px 0 11px 10px;
-    //  border-color: transparent transparent transparent #000000;
-    //}
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
   &__path {
-    background: #262f77;
-    //background: #ff489c;
+    //background: #262f77;
+    background: #006298;
+    color: #fff;
     &::after {
-      border-color: transparent transparent transparent #262f77;
-      //border-color: transparent transparent transparent #ff489c;
+      //border-color: transparent transparent transparent #262f77;
+      border-color: transparent transparent transparent #006298;
     }
   }
   &__git {
-    background: #e8e517;
-    //background: #fffa37;
+    //background: #e8e517;
+    background: #d2ff5e;
     color: #000000;
     margin: 0 25px 0 0;
     &::after {
-      border-color: transparent transparent transparent #fffa37;
+      //border-color: transparent transparent transparent #fffa37;
+      border-color: transparent transparent transparent #d2ff5e;
     }
+  }
+  &__clock{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 26px;
+    background: #006298;
+    color: #fff;
   }
 }
 
@@ -186,6 +191,9 @@
     animation-timing-function: cubic-bezier(0, 1.26, 0.18, 0.96);
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
+  }
+  &__error{
+    color: #ff0001;
   }
 }
 
