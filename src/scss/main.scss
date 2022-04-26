@@ -42,6 +42,7 @@
   transform: translate(-50%, -50%);
   padding: 0 10px;
   background: $black;
+  white-space: nowrap;
 }
 .sanfrancisco {
   font-family: "SanFrancisco";
@@ -81,6 +82,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 12px;
   column-gap: 6px;
+  max-height: 50%;
 }
 .portfolio-list__item {
 }
